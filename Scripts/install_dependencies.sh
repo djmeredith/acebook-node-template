@@ -4,14 +4,14 @@ echo "Updating packages..."
 sudo yum update -y
 echo "Updated"
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install nvm
+sudo brew install nvm
 
-nvm install 23
+sudo nvm install 23
 
-npm install
+sudo npm install
 
-brew tap mongodb/brew
+sudo brew tap mongodb/brew
 
-brew install mongodb-community@8.0
+sudo brew install mongodb-community@8.0
