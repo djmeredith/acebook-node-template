@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/app
+ 
+hooks:
+  BeforeInstall:
+    - location: Scripts/install_dependecies.sh
+ 
+  AfterInstall:
+    - location: 
+      timeout: 180
+ 
+  ApplicationStart:
+    - location: 
+      timeout: 3600
