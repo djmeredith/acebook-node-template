@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI pipeline
 
 on:
   pull_request:
@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         node-version: [23.x]
+        mongodb-version: ['8.0']
 
     steps:
     - name: Checkout repo
@@ -18,15 +19,11 @@ jobs:
 
     - name: Install dependecies
       run: npm install
-
-    - name: Install MongoDB
-      run: |
-        sudo apt-get install gnupg curl
-        curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
-        echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
-        sudo apt-get update
-        sudo apt-get install -y mongodb-org
-        sudo systemctl start mongod
+    
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.12.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
         
     - name: Start server in background
       run: |
@@ -35,4 +32,3 @@ jobs:
 
     - name: Run tests
       run: npm run test 
-
