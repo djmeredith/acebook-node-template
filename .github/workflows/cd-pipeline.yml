@@ -30,4 +30,4 @@ jobs:
         aws deploy create-deployment \
         --application-name md-acebook \
         --deployment-group-name md-acebook \
-        --s3-location bucket=mantasdean-acebook, key=app_files.zip, bundleType=zip
+        --s3-location bucket=mantasdean-acebook,key=app_files.zip,bundleType=zip
