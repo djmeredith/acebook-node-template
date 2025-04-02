@@ -6,12 +6,12 @@ files:
  
 hooks:
   BeforeInstall:
-    - location: Scripts/install_dependecies.sh
+    - location: Scripts/install_dependencies.sh
  
-  AfterInstall:
-    - location: 
-      timeout: 180
+  # AfterInstall:
+  #   - location: 
+  #     timeout: 180
  
-  ApplicationStart:
-    - location: 
-      timeout: 3600
+  # ApplicationStart:
+  #   - location: 
+  #     timeout: 3600
