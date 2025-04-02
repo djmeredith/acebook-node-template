@@ -11,13 +11,13 @@ jobs:
     strategy:
       matrix:
         node-version: [23.x]
+        mongodb-version: ['8.0']
 
-    services:
-      mongodb:
-        image: mongo:8.0
-        options: "--health-cmd='mongo --eval \"db.adminCommand({ ping: 1 })\"' --health-interval=10s --health-timeout=5s --health-retries=5"
-        ports:
-          - 27017:27017
+    # services:
+    #   mongodb:
+    #     image: mongo:8.0
+    #     ports:
+    #       - 27017:27017
 
     steps:
     - name: Checkout repo
@@ -35,12 +35,10 @@ jobs:
     #     sudo apt-get install -y mongodb-org
     #     sudo systemctl start mongod
     
-    - name: Wait for MongoDB to be ready
-      run: |
-        echo "Waiting for MongoDB to start..."
-        until docker exec mongodb mongo --eval "print('waited for connection')"; do
-          sleep 1
-        done
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.12.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
         
     - name: Start server in background
       run: |
