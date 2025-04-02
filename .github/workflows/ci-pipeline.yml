@@ -34,8 +34,12 @@ jobs:
     #     sudo apt-get install -y mongodb-org
     #     sudo systemctl start mongod
     
-    - name: Start MongoDB
-      run: sudo systemctl start mongod
+    - name: Wait for MongoDB to be ready
+      run: |
+        echo "Waiting for MongoDB to start..."
+        until docker exec mongodb mongo --eval "print('waited for connection')"; do
+          sleep 1
+        done
         
     - name: Start server in background
       run: |
