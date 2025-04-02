@@ -10,10 +10,6 @@ hooks:
       timeout: 300
       runas: root
  
-  # AfterInstall:
-  #   - location: 
-  #     timeout: 180
- 
-  # ApplicationStart:
-  #   - location: 
-  #     timeout: 3600
+  ApplicationStart:
+    - location: Scripts/start_server.sh
+      timeout: 3600
