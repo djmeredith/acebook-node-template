@@ -26,7 +26,8 @@ jobs:
       run: aws s3 cp app_files.zip s3://mantasdean-acebook/app_files.zip
 
     - name: Trigger CodeDeploy
-      run: aws deploy create-deployment \
+      run: |
+        aws deploy create-deployment \
         --application-name md-acebook \
         --deployment-group-name md-acebook \
         --s3-location bucket=mantasdean-acebook, key=app_files.zip, bundleType=zip
