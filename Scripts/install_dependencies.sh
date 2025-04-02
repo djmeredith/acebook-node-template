@@ -3,6 +3,11 @@
 set -e
 
 sudo yum update -y
+
+sudo yum install -y curl
+
+curl -fsSL https://rpm.nodesource.com/setup_23.x | sudo bash -
+
 sudo yum install -y nodejs npm
 
 cd /home/ec2-user/app
