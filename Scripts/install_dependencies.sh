@@ -4,7 +4,7 @@ set -e
 
 cd /home/ec2-user/app
 
-npm install
+npm ci
 
 if [ ! -f /etc/yum.repos.d/mongodb-org-8.0.repo ]; then
     echo "MongoDB repository not found. Adding it now..."
@@ -27,5 +27,5 @@ else
     echo "MongoDB already installed."
 fi
 
-
+echo "Installing PM2 globally..."
 npm install -g pm2
