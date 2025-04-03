@@ -2,6 +2,10 @@
 
 set -e
 
+cd /home/ec2-user/app
+
+pm2 stop app
+
 echo "yum update"
 sudo yum update -y
 
@@ -12,8 +16,8 @@ echo "install node and npm"
 sudo yum install -y nodejs npm
 
 echo "delete node modules if they exist"
-if [ -d "/home/ec2-user/app/node_modules" ]; then
-    rm -rf /home/ec2-user/app/node_modules
+if [ -d "node_modules" ]; then
+    rm -rf node_modules
 else
     echo "node_modules does not exist"
 fi
