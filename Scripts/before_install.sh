@@ -18,8 +18,7 @@ then
     if pm2 list | grep -q 'md-app'
     then
         echo "PM2 processes are running. Stopping all PM2 processes..."
-        pm2 stop all
-        pm2 delete all
+        sudo pm2 delete md-app
     else
         echo "No PM2 processes are currently running."
     fi
