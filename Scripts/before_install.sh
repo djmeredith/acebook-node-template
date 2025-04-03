@@ -2,7 +2,6 @@
 
 set -e
 
-echo "Changing directory to /home/ec2-user"
 cd /home/ec2-user
 
 echo "Cleaning YUM cache..."
@@ -11,8 +10,12 @@ sudo yum clean all
 echo "Updating system packages..."
 sudo yum update -y
 
-echo "Adding Node.js 23 repository..."
-curl -fsSL https://rpm.nodesource.com/setup_23.x | sudo bash -
+if ! grep -q "https://rpm.nodesource.com/setup_23.x" /etc/yum.repos.d/nodesource.repo; then
+    echo "Adding Node.js 23 repository..."
+    curl -fsSL https://rpm.nodesource.com/setup_23.x | sudo bash -
+else
+    echo "Node.js 23 repository already exists."
+fi
 
 echo "Installing Node.js and npm..."
 sudo yum install -y nodejs npm
