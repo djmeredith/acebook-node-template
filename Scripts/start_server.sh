@@ -11,5 +11,3 @@ pm2 start npm --name "app" -- start
 
 pm2 save
 pm2 startup
-
-exit 0
