@@ -11,20 +11,22 @@ cd /home/ec2-user
 #     echo "app does not exist"
 # fi
 
-if command -v pm2 &> /dev/null
-then
-    echo "PM2 is installed."
+# if command -v pm2 &> /dev/null
+# then
+#     echo "PM2 is installed."
     
-    if pm2 list | grep -q 'md-app'
-    then
-        echo "PM2 processes are running. Stopping all PM2 processes..."
-        sudo pm2 delete md-app
-    else
-        echo "No PM2 processes are currently running."
-    fi
-else
-    echo "PM2 is not installed or not found in the PATH."
-fi
+#     if pm2 list | grep -q 'md-app'
+#     then
+#         echo "PM2 processes are running. Stopping all PM2 processes..."
+#         sudo pm2 delete md-app
+#     else
+#         echo "No PM2 processes are currently running."
+#     fi
+# else
+#     echo "PM2 is not installed or not found in the PATH."
+# fi
+
+pm2 delete md-app
 
 sudo yum clean all
 
