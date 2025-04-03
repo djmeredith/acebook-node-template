@@ -9,7 +9,7 @@ if ss -tuln | grep -q ":$PORT"; then
 else
     echo "Port $PORT is not open."
 fi
-
+sleep 5
 echo "Checking website exists"
 if curl —-silent --fail http://35.179.121.20:3000 ; then
     echo "website is running."
