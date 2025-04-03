@@ -7,17 +7,6 @@ cd /home/ec2-user
 echo "Checking if PM2 is installed..."
 if command -v pm2 &> /dev/null
 then
-    echo "PM2 is installed. Checking for existing processes..."
-    
-    if pm2 list | grep -q "md-app"; then
-        echo "md-app process found. Stopping and deleting it..."
-        pm2 stop md-app
-        pm2 delete md-app
-    else
-        echo "No md-app process found."
-    fi
-
-    echo "Deleting all PM2 processes just in case..."
     pm2 stop all
     pm2 delete all
 else
