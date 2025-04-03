@@ -7,4 +7,9 @@ cd /home/ec2-user/app
 echo "starting mongo"
 sudo systemctl start mongod
 
-nohup npm start > app.log 2>&1 &
+pm2 start npm --name "app" -- start
+
+pm2 save
+pm2 startup
+
+exit 0

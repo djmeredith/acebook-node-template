@@ -21,3 +21,5 @@ else
 fi
 
 sudo yum install -y mongodb-org
+
+npm install -g pm2
