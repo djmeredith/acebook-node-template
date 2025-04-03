@@ -11,6 +11,8 @@ else
     echo "app does not exist"
 fi
 
+sudo yum clean all
+
 echo "yum update"
 sudo yum update -y
 
