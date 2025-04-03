@@ -26,7 +26,7 @@ cd /home/ec2-user
 #     echo "PM2 is not installed or not found in the PATH."
 # fi
 
-pm2 delete md-app
+sudo pm2 delete md-app
 
 sudo yum clean all
 
