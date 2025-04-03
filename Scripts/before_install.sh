@@ -13,8 +13,15 @@ cd /home/ec2-user
 
 if command -v pm2 &> /dev/null
 then
-    echo "Stopping all PM2 processes..."
-    pm2 stop all
+    echo "PM2 is installed."
+    
+    if pm2 list | grep -q 'online'
+    then
+        echo "PM2 processes are running. Stopping all PM2 processes..."
+        pm2 stop all
+    else
+        echo "No PM2 processes are currently running."
+    fi
 else
     echo "PM2 is not installed or not found in the PATH."
 fi
