@@ -26,8 +26,6 @@ cd /home/ec2-user
 #     echo "PM2 is not installed or not found in the PATH."
 # fi
 
-sudo pm2 delete all
-
 sudo yum clean all
 
 echo "yum update"
