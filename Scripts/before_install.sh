@@ -7,7 +7,15 @@ cd /home/ec2-user
 echo "Checking if PM2 is installed..."
 if command -v pm2 &> /dev/null
 then
-    pm2 delete all
+    echo "PM2 is installed. Checking for running processes..."
+    
+    if pm2 list | grep -q "online"; then
+        echo "PM2 processes found. Stopping and deleting all..."
+        pm2 stop all
+        pm2 delete all
+    else
+        echo "No running PM2 processes found."
+    fi
 else
     echo "PM2 is not installed, skipping PM2 cleanup."
 fi
