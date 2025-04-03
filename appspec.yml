@@ -4,11 +4,11 @@ files:
   - source: /
     destination: /home/ec2-user/app
  
-# hooks:
-#   BeforeInstall:
-#     - location: Scripts/install_dependencies.sh
-#       timeout: 300
-#       runas: root
+hooks:
+  BeforeInstall:
+    - location: Scripts/install_dependencies.sh
+      timeout: 300
+      runas: root
  
 #   ApplicationStart:
 #     - location: Scripts/start_server.sh
