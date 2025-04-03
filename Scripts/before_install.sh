@@ -15,7 +15,7 @@ if command -v pm2 &> /dev/null
 then
     echo "PM2 is installed."
     
-    if pm2 list | grep -q 'online'
+    if pm2 list | grep -q 'md-app'
     then
         echo "PM2 processes are running. Stopping all PM2 processes..."
         pm2 stop all
