@@ -29,5 +29,3 @@ fi
 
 
 npm install -g pm2
-
-sudo env PATH=$PATH:/usr/bin /usr/lib/nodejs18/lib/node_modules/pm2/bin/pm2 startup systemd -u ec2-user --hp /home/ec2-user

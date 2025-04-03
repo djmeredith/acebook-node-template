@@ -4,11 +4,19 @@ set -e
 
 cd /home/ec2-user
 
-echo "delete app directory if it exists"
-if [ -d "app" ]; then
-    rm -rf app
+# echo "delete app directory if it exists"
+# if [ -d "app" ]; then
+#     rm -rf app
+# else
+#     echo "app does not exist"
+# fi
+
+if command -v pm2 &> /dev/null
+then
+    echo "Stopping all PM2 processes..."
+    pm2 stop all
 else
-    echo "app does not exist"
+    echo "PM2 is not installed or not found in the PATH."
 fi
 
 sudo yum clean all
@@ -22,9 +30,9 @@ curl -fsSL https://rpm.nodesource.com/setup_23.x | sudo bash -
 echo "install node and npm"
 sudo yum install -y nodejs npm
 
-# echo "delete node modules if they exist"
-# if [ -d "node_modules" ]; then
-#     rm -rf node_modules
-# else
-#     echo "node_modules does not exist"
-# fi
+echo "delete node modules if they exist"
+if [ -d "node_modules" ]; then
+    rm -rf node_modules
+else
+    echo "node_modules does not exist"
+fi
