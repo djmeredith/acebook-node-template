@@ -20,7 +20,13 @@ else
     echo "MongoDB repository already exists."
 fi
 
-sudo yum install -y mongodb-org
+if ! command -v mongod &> /dev/null; then
+    echo "MongoDB not found, installing..."
+    sudo yum install -y mongodb-org
+else
+    echo "MongoDB already installed."
+fi
+
 
 npm install -g pm2
 
