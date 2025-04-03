@@ -6,6 +6,4 @@ cd /home/ec2-user/app
 
 sudo systemctl start mongod
 
-npm start &
-
-echo "Server started..."
+npm start & disown
