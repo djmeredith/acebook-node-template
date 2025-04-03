@@ -7,7 +7,6 @@ cd /home/ec2-user
 echo "Checking if PM2 is installed..."
 if command -v pm2 &> /dev/null
 then
-    pm2 stop all
     pm2 delete all
 else
     echo "PM2 is not installed, skipping PM2 cleanup."
