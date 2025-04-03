@@ -3,19 +3,24 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/app
- 
+
 hooks:
   BeforeInstall:
-    - location: Scripts/before_install.sh
+    - location: scripts/before_install.sh
       timeout: 300
       runas: root
       
   AfterInstall:
-    - location: Scripts/install_dependencies.sh
+    - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root
- 
+
   ApplicationStart:
-    - location: Scripts/start_server.sh
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: ec2-user
+
+  ValidateService:
+    - location: scripts/validate_service.sh
       timeout: 300
       runas: ec2-user
