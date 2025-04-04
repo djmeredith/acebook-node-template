@@ -4,6 +4,7 @@ set -e
 PORT=3000 
 URL=$(curl -s http://checkip.amazonaws.com/) 
 echo "The URL of this ec2 instance is ${URL}"
+exit 1
 
 # echo "Checking website exists"
 # if curl --silent --fail "http://${URL}:${PORT}"; then
