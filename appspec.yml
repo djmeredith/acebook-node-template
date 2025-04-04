@@ -6,7 +6,7 @@ files:
 
 hooks:
   ApplicationStop:
-    - location: scripts/stop_pm2.sh
+    - location: Scripts/stop_pm2.sh
       timeout: 300
   BeforeInstall:
     - location: Scripts/before_install.sh
