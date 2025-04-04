@@ -2,6 +2,7 @@
 set -e
 
 PORT=3000 
+echo "The port used is ${PORT}"
 URL=$(curl -s http://checkip.amazonaws.com/) 
 echo "The ip address of this ec2 instance is ${URL}"
 exit 1
