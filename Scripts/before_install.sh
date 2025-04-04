@@ -29,3 +29,4 @@ fi
 if [ ! -f /etc/yum.repos.d/mongodb-org-8.0.repo ]; then
     echo "MongoDB repo not found. Adding..."
     sudo tee
+fi
