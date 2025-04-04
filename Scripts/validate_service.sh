@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 PORT=3000 
 URL=http://35.179.121.20

@@ -5,21 +5,21 @@ files:
     destination: /home/ec2-user/app
 
 hooks:
+  ApplicationStop:
+    - location: scripts/stop_pm2.sh
+      timeout: 300
   BeforeInstall:
     - location: Scripts/before_install.sh
       timeout: 300
-      runas: root
-      
-  AfterInstall:
+      runas: root 
+  Install:
     - location: Scripts/install_dependencies.sh
       timeout: 300
       runas: root
-
   ApplicationStart:
     - location: Scripts/start_server.sh
       timeout: 300
       runas: ec2-user
-
   ValidateService:
     - location: Scripts/validate_service.sh
       timeout: 300
