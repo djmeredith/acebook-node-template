@@ -2,22 +2,15 @@
 set -e
 
 PORT=3000 
-URL=http://35.179.121.20
-
-echo "Checking port availability..."
-if ss -tuln | grep -q ":$PORT"; then
-    echo "Port $PORT is open, server not running."
-	exit 1
-else
-    echo "Port $PORT is not open."
-fi
-
-sleep 5
+echo "The port used is ${PORT}"
+URL=$(curl -s http://checkip.amazonaws.com/) 
+echo "The ip address of this ec2 instance is ${URL}"
+exit 1
 
 echo "Checking website exists"
-if curl —-silent --fail "${URL}:${PORT}" ; then
-    echo "website is running."
+if curl --silent --fail "http://${URL}:${PORT}"; then
+    echo "Website is running on port ${PORT}."
 else
-    echo "Website not runnning."
+    echo "Website not running."
     exit 1
 fi
