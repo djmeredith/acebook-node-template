@@ -3,7 +3,7 @@ set -e
 
 PORT=3000 
 URL=$(curl -s http://checkip.amazonaws.com/) 
-echo "The ip of this ec2 instance is ${URL}"
+echo "The ip/url of this ec2 instance is ${URL}"
 exit 1
 
 # echo "Checking website exists"
