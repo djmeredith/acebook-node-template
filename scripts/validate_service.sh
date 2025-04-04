@@ -5,7 +5,7 @@ PORT=3000
 echo "The port used is ${PORT}"
 URL=$(curl -s http://checkip.amazonaws.com/) 
 echo "The ip address of this ec2 instance is ${URL}"
-exit 1
+
 
 echo "Checking website exists"
 if curl --silent --fail "http://${URL}:${PORT}"; then
